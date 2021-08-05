@@ -1,0 +1,90 @@
+:root{
+    --checkmarkWidth: 50%;
+    --checkmarkHeight: 20%;
+    --successfulCheckColor: green;
+    --loadingColor: var(--primary);
+    --loadingBackground: grey;
+}
+
+#checkmarkContainer{
+    width: 100px;
+    height: 100px;
+}
+
+.loadingBorder{
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--loadingBackground);
+    border-top-color: var(--loadingColor);
+    border-radius: 100%;
+
+    animation: loading 2s infinite; /* completeSuccess 2s ease-in-out; */
+    animation-fill-mode: forwards;
+}
+
+#checkmark{
+    width: 100%;
+    height: 100%;
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 100%;
+    left: calc(100% - var(--checkmarkWidth));
+}
+
+#checkmark div{
+    width: 0;
+    height: 0;
+    background-color: var(--successfulCheckColor);
+}
+
+#checkmarkShortTick{
+    /* animation: shortCheckAnimation .5s; */
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+
+}
+
+#checkmarkLongTick{
+    /* animation: longCheckAnimation .5s; */
+    animation-fill-mode: forwards;
+    animation-delay: 2.3s;
+
+}
+
+@keyframes loading {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shortCheckAnimation {
+    from{
+        height: 0;
+    }
+    to {
+        height: var(--checkmarkHeight);
+        width: 2px;
+    }
+}
+
+@keyframes longCheckAnimation {
+    from{
+        width: 0;
+    }
+    to {
+        width: var(--checkmarkWidth);
+        height: 2px;
+    }
+}
+
+@keyframes completeSuccess {
+    from {
+        border-top-color: var(--successfulCheckColor);
+    }
+    to {
+        border-color: var(--successfulCheckColor);
+    }
+}

@@ -1,0 +1,59 @@
+:root{
+  --primary: #2E2E2E;
+  --secondary: #E8E8E8;
+  --grid-percentage: 35%;
+}
+
+body{
+  color: var(--primary);
+}
+
+header{
+  background: var(--primary);
+  padding: 40px;
+  color: var(--secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* position: sticky;
+  top: 0; */
+}
+
+header * {
+  align-self: center;
+}
+
+header h1, h5{
+  margin: 0;
+}
+
+header a{
+  text-decoration: inherit;
+  color: inherit;
+}
+
+#App{
+  display: flex;
+  padding-top: 5%;
+  padding-left: 10%;
+  flex-wrap: wrap;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 840px) {
+  header h5{
+    display: none;
+  }
+
+  header h1{
+    font-size: 1.5em;
+  }
+
+  #App{
+    padding-left: 0;
+    justify-content: center;
+  }
+}

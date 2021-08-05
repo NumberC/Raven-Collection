@@ -1,0 +1,70 @@
+:root{
+    --failXColor: red;
+    --failAnimation: none;
+}
+
+#failRedX {
+    width: 100px;
+    height: 100px;
+}
+
+#redX{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    bottom: 50%;
+    left: 20%;
+
+    transform: rotate(45deg);
+}
+
+#redX div{
+    width: 0;
+    height: 0;
+    background-color: var(--failXColor);
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
+
+#leftX{
+    position: relative;
+    right: 25%;
+    top: 25%;
+
+    /* animation: leftXStickAnimation .5s; */
+}
+
+#rightX{
+    /* animation: rightXStickAnimation .6s; */
+}
+
+@keyframes completeFail {
+    from{
+        border-top-color: var(--failXColor);
+    }
+    to{
+        border-color: var(--failXColor);
+    }
+}
+
+@keyframes leftXStickAnimation {
+    from{
+        width: 0;
+        height: 0;
+    }
+    to {
+        width: 50%;
+        height: 2px;
+    }
+}
+
+@keyframes rightXStickAnimation {
+    from{
+        height: 0;
+        width: 0;
+    }
+    to {
+        height: 50%;
+        width: 2px;
+    }
+}

@@ -1,0 +1,118 @@
+#checkoutForm{
+    padding-left: 20px;
+}
+
+@keyframes identifier {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+#checkoutForm input{
+    border: 2px solid var(--secondary);
+    border-radius: 5px;
+    min-height: 35px;
+    box-sizing: border-box;
+}
+
+#checkoutForm label, #checkoutForm input{
+    display: block;
+}
+
+#checkoutForm > div{
+    margin-bottom: 15px;
+}
+
+#nameForm{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+#nameForm #firstNameDiv{
+    margin-right: 15px;
+    flex-grow: 1;
+}
+
+#nameForm #lastNameDiv{
+    margin-left: 15px;
+    flex-grow: 1;
+}
+
+#firstNameDiv input{
+    width: 100%;
+}
+
+#lastNameDiv input{
+    width: 100%;
+}
+
+.fullLengthInputDiv{
+    width:100%;
+    margin-top: 10px;
+}
+
+.fullLengthInputDiv input{
+    width: 100%;
+}
+
+#townAndZipDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#zipCode{
+    width: 8em;
+    flex-grow: 2;
+}
+
+#stateInput{
+    width: 5em;
+    flex-grow: 1;
+}
+
+#CheckoutBtn{
+    margin-top: 20px;
+    width: 100%;
+    height: 2.5em;
+    font-size: 1em;
+    border: 0;
+    background-color: var(--primary);
+    color: var(--secondary);
+    transition: all 0.2s ease-out;
+}
+
+#CheckoutBtn:disabled{
+    filter:opacity(.5);
+}
+
+#CheckoutBtn:disabled:hover{
+    cursor: default;
+}
+
+@media screen and (max-width: 1000px){ /* 800 */
+    #checkoutForm{
+        padding-left: 0;
+    }
+
+    #nameForm{
+        flex-direction: column;
+        justify-content: initial;
+    }
+
+    #nameForm #firstNameDiv, #nameForm #lastNameDiv{
+        margin: 0;
+    }
+    
+    #townAndZipDiv{
+        flex-direction: column;
+    }
+
+    #townAndZipDiv input{
+        width: 100%;
+    }
+}

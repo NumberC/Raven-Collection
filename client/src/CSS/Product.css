@@ -1,0 +1,27 @@
+:root{
+    --productWidth: 200px;
+}
+
+.product{
+    text-align: left;
+    overflow-x: hidden;
+    width: var(--productWidth);
+    margin-bottom: 10px;
+}
+
+.product h2{
+    overflow-x: hidden;
+}
+
+.product h2, .product h3{
+    margin: 5px;
+}
+
+.product img{
+    width: var(--productWidth);
+}
+
+.product a{
+    text-decoration: inherit;
+    color: inherit;   
+}
