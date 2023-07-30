@@ -31,12 +31,26 @@ class Database{
         await pool.query(`UPDATE inventory SET quantity = quantity - 1 WHERE id=${id} AND quantity >= 1`);
     }
 
-    static async addProduct(name, price, qty){
-        await pool.query(`INSERT INTO inventory(name, price, quantity) VALUES ('${name}', ${price}, ${qty});`)
+    static async getProductAverageRating(id){
+        var query = await pool.query(`SELECT avg_rating FROM inventory WHERE id=${id}`);
+        return query.rows[0].avg_rating;
     }
 
-    static async updateProduct(id, name, price, qty){
-        await pool.query(`UPDATE inventory SET name='${name}', price=${price}, quantity=${qty} WHERE id=${id}`);
+    static async getProductTotalRatings(id){
+        var query = await pool.query(`SELECT total_ratings FROM inventory WHERE id=${id}`);
+        return query.rows[0].total_ratings;
+    }
+
+    static async rateProduct(id, new_rating){
+        if (new_rating > 5 || new_rating < 0) return;
+
+        avg_rating = await this.getProductRating(id);
+        total_ratings = await this.getProductTotalRatings(id);
+        
+        avg_rating = (avg_rating*total_ratings + new_rating) / (total_ratings+1);
+        total_ratings++;
+
+        await pool.query(`UPDATE inventory SET total_ratings=${total_ratings}, avg_rating=${avg_rating} WHERE id=${id}`);
     }
 }
 
