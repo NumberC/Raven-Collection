@@ -18,6 +18,10 @@ class APIInterface {
         return APICall.data;
     }
 
+    static getProductRating(product){
+        return product.avg_rating ? product.avg_rating:4;
+    }
+
     static getProductID(product){
         return product.id ? product.id:null;
     }

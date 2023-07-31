@@ -1,17 +1,13 @@
 # How to Run
+To run this project, create a `.env` file with the following fields:
 
-Create a `.env` file with the following fields:
+```
+DB= #Postgres database
+DB_USERNAME= #Postgres username
+DB_PASSWORD= #Postgres password
+STRIPE_PUBLISHABLE= #Stripe publishable key
+STRIPE_SECRET= #Stripe secret key
+REACT_APP_STRIPE_PUBLISHABLE= #React Stripe key 
+```
 
-`DB` - postgres database
-
-`DB_USERNAME` - postgres username
-
-`DB_PASSWORD` - postgres password
-
-`DB_HOST` - postgres host
-
-`DB_PORT` - port that postgres is running on
-
-`STRIPE_PUBLISHABLE` - stripe publishable key
-
-`STRIPE_SECRET` - stripe secret key
+Then run `docker compose up`

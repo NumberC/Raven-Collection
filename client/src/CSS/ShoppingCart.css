@@ -3,5 +3,17 @@
 }
 
 #ShoppingCart{
-    width: min(20vw, 32px);
+    width: min(20vw, 64px);
+    display: block;
+}
+
+#ShoppingCart svg{
+    position: relative;
+    top: 0.4em;
+}
+
+#ShoppingCart h4{
+    display: inline;
+    position: relative;
+    right: 1.3em;
 }

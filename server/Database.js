@@ -1,4 +1,5 @@
-const {Client, Pool} = require("pg");
+const {Client, Pool, types} = require("pg");
+types.setTypeParser(1700, x => parseFloat(x));
 const pool = new Pool({
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,

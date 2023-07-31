@@ -1,0 +1,38 @@
+version: "1.0"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: ${DB}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./server/db/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./server/db/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+    ports:
+      - "5432:5432"
+  backend:
+    build: ./server
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB=${DB}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=5432
+      - STRIPE_PUBLISHABLE=${STRIPE_PUBLISHABLE}
+      - STRIPE_SECRET=${STRIPE_SECRET}
+    ports:
+      - "5000:5000"
+  frontend:
+    build: ./client
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_STRIPE_PUBLISHABLE=${REACT_APP_STRIPE_PUBLISHABLE}
+    ports:
+      - "3000:3000"
+volumes:
+  db-data: 

@@ -9,7 +9,7 @@ class Product extends Component{
                 <Link to={"/item/"+this.props.id} >
                     <img src="https://m.media-amazon.com/images/I/51-ZYnAU-SL._AC_.jpg" alt="Item Thumbnail"/>
                     <h2>{this.props.title}</h2>
-                    <h3>${this.props.price}</h3>
+                    <h3>${this.props.price.toFixed(2)}</h3>
                 </Link>
             </div>
         );

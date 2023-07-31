@@ -10,7 +10,8 @@ class ProductPage extends Component {
         this.setState({
             id: parseInt(props.match.params.id),
             name: null,
-            price: null
+            price: null,
+            rating: null
         });
     }
 
@@ -25,8 +26,9 @@ class ProductPage extends Component {
         var product = await APIInterface.getProduct(this.state.id);
         var name = APIInterface.getProductName(product);
         var price = APIInterface.getProductPrice(product);
+        var rating = APIInterface.getProductRating(product);
 
-        this.setState({name: name, price: price})
+        this.setState({name: name, price: price, rating: rating})
     }
 
     componentDidMount() {
@@ -35,35 +37,12 @@ class ProductPage extends Component {
         this.getItemData();
     }
 
-    // productImagesScroll(){
-    //     var productImages = $("#productImages");
-    //     var scrollPos = 0;
-    //     const speed = 0.3;
-    //     productImages.on("wheel", (e) => {
-    //         var my = e.originalEvent.deltaY * speed;
-    //         scrollPos += my;
-    //         productImages.scrollLeft(scrollPos);
-    //     })
-    // }
-
-    // imagesToThumbnail(){
-    //     var images = $(".images");
-    //     var mainImage = $("#mainImage");
-    //     images.on("mouseover", (e) => {
-    //         var image = e.currentTarget;
-    //         var link = image.getAttribute("src");
-    //         mainImage.attr("src", link);
-    //     })
-    // }
-
     addToCart(){
         if(this.state.id && this.state.name && this.state.price)
         this.props.addItem(this.state.id, this.state.name, this.state.price);
     }
 
     render() {
-        var rating = 4.5;
-
         return (
             <div id="productPageContainer">
                 <div id="productImagesContainer">
@@ -76,13 +55,13 @@ class ProductPage extends Component {
                 </div>
                 <div>
                     <h1>{(this.state.name) ? this.state.name:"Loading"}</h1>
-                    <h2>{(this.state.price) ? "$"+this.state.price:"Loading"}</h2>
+                    <h2>{(this.state.price) ? "$"+this.state.price.toFixed(2):"Loading"}</h2>
 
                     <div>
                         <StarRatings
                             name="rate1"
                             numberOfStars={5}
-                            rating={rating}
+                            rating={this.state.rating ? this.state.rating:0}
                             starDimension={"2em"}
                         />
                     </div>

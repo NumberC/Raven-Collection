@@ -53,8 +53,7 @@ class App extends Component {
     var productInCart = this.state.cartItems.find(x => x.id === productID);
 
     if (productInCart) {
-      var currentItemQty = this.state.cartItems[productInCart].qty;
-      this.setItemQty(productID, currentItemQty + 1)
+      this.setItemQty(productID, productInCart.qty + 1)
     } else {
       var itemToAdd = {
         id: productID,

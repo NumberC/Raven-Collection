@@ -19,7 +19,7 @@ class ProductCartListing extends Component{
                 <div id="productCartInfo">
                     <div>
                         <h1>{this.props.name}</h1>
-                        <h4>${this.props.price}</h4>
+                        <h4>${this.props.price.toFixed(2)}</h4>
                     </div>
                     <div>
                         <label for="qtyInput">Qty: </label>

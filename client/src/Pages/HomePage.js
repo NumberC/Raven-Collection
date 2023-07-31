@@ -23,7 +23,7 @@ class HomePage extends Component{
                 {this.state.products && this.state.products.map((obj, i) => 
                     <Product id={APIInterface.getProductID(obj)} title={APIInterface.getProductName(obj)} price={APIInterface.getProductPrice(obj)} />
                 )}
-                {[...Array(40)].map((obj, i) => (
+                {[...Array(8)].map((obj, i) => (
                     <Product id={1} title={"Funko Pop"} price={9.99} />
                 ))}
             </div>
